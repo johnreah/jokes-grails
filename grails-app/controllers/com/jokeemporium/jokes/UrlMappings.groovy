@@ -1,4 +1,4 @@
-package jokes.grails
+package com.jokeemporium.jokes
 
 class UrlMappings {
 

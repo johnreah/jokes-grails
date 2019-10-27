@@ -1,4 +1,4 @@
-package jokes.grails
+package com.jokeemporium.jokes
 
 import grails.boot.GrailsApp
 import grails.boot.config.GrailsAutoConfiguration

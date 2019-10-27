@@ -1,0 +1,21 @@
+Controllers use a mixture of scaffolding and custom code.
+Scaffolding gsp templates are significantly different in v4 from v1.
+Existing main css is all written for v1, and I want to retain the styles.
+
+Options are therefore:
+- Overhaul v4 templates to generate v1 code
+  - Pro: hoped it would be straightforward
+  - Con: it's a step in the wrong direction
+  - Status: it wasn't easy. install-templates gives you the outline, but the tags all need to be reworked too.
+- Overhaul CSS to work with v4 templates
+  - Pro: more in keeping with an upgrade to v4
+  - Con: lots of work required on styles, which is not what this project was about; I don't like the v4 styles.
+  - Status: probably the purest option, but more work than I want to do.
+- Use v1 styles for v1 code and v4 styles for v4 scaffolding
+  - Pro: should be able to achieve good functionality with less work
+  - Con: inconsistent look across different domain classes
+  - Status: TODO
+- Add controller & view code to scaffolded classes
+  - Pro: probably quicker to change groovy code than css
+  - Con: it's a step in the wrong direction
+  - Status: not tried yet

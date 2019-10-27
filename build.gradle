@@ -11,7 +11,7 @@ buildscript {
 }
 
 version "0.1"
-group "jokes.grails"
+group "com.jokeemporium.jokes"
 
 apply plugin:"eclipse"
 apply plugin:"idea"
@@ -54,6 +54,7 @@ dependencies {
     compile "org.grails.plugins:hibernate5"
     compile "org.hibernate:hibernate-core:5.4.0.Final"
     compile "org.grails.plugins:gsp"
+    compile "org.grails.plugins:ajax-tags:1.0.0" // TODO: deprecated
     compileOnly "io.micronaut:micronaut-inject-groovy"
     console "org.grails:grails-console"
     profile "org.grails.profiles:web"
@@ -62,6 +63,7 @@ dependencies {
     runtime "org.apache.tomcat:tomcat-jdbc"
     runtime "javax.xml.bind:jaxb-api:2.3.0"
     runtime "com.bertramlabs.plugins:asset-pipeline-grails:3.0.10"
+    runtime "mysql:mysql-connector-java:8.0.18"
     testCompile "org.grails:grails-gorm-testing-support"
     testCompile "org.mockito:mockito-core"
     testCompile "org.grails:grails-web-testing-support"
