@@ -1,5 +1,7 @@
 package com.jokeemporium.jokes
 
+import org.springframework.validation.BindingResult
+
 class CategoryController {
 
     static scaffold = Category
@@ -15,13 +17,13 @@ class CategoryController {
 
     def create = {
         def categoryInstance = new Category()
-        categoryInstance.properties = params
+        categoryInstance.properties = params as BindingResult
         return [categoryInstance: categoryInstance]
     }
 
     def save = {
         def categoryInstance = new Category(params)
-        categoryInstance.description = categoryInstance.description ?: '';
+        categoryInstance.description = categoryInstance.description ?: ''; // hack for non-nullable DB column
         if (categoryInstance.save(flush: true)) {
             flash.message = "${message(code: 'default.created.message', args: [message(code: 'category.label', default: 'Category'), categoryInstance.id])}"
             redirect(action: "show", id: categoryInstance.id)
