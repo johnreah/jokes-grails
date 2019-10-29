@@ -1,7 +1,5 @@
 package com.jokeemporium.jokes
 
-import com.jokeemporium.jokes.Category
-
 class Categorisation {
 
     Joke joke
@@ -20,7 +18,7 @@ class Categorisation {
             categorisation = new Categorisation()
             joke.addToCategorisations(categorisation)
             category.addToCategorisations(categorisation)
-            categorisation.save()
+            categorisation.save(flush:true)
         }
         return categorisation
     }
@@ -30,7 +28,7 @@ class Categorisation {
         if (c) {
             joke.removeFromCategorisations(c)
             category.removeFromCategorisations(c)
-            c.delete()
+            c.delete(flush:true)
         }
     }
   
