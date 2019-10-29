@@ -60,7 +60,7 @@
         </ul>
       </div>
       <br/>
-      <p>Application Version: ${grailsApplication.metadata.info.app.version}</p>
+      <p>Application: ${grailsApplication.metadata.info.app.name} ${grailsApplication.metadata.info.app.version}</p>
     </div>
   </body>
 </html>
