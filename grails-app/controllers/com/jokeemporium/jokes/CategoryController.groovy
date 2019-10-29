@@ -1,5 +1,6 @@
 package com.jokeemporium.jokes
 
+import org.springframework.dao.DataIntegrityViolationException
 import org.springframework.validation.BindingResult
 
 class CategoryController {
@@ -23,7 +24,7 @@ class CategoryController {
 
     def save = {
         def categoryInstance = new Category(params)
-        categoryInstance.description = categoryInstance.description ?: ''; // hack for non-nullable DB column
+        categoryInstance.description = categoryInstance.description ?: '' // hack for non-nullable DB column
         if (categoryInstance.save(flush: true)) {
             flash.message = "${message(code: 'default.created.message', args: [message(code: 'category.label', default: 'Category'), categoryInstance.id])}"
             redirect(action: "show", id: categoryInstance.id)
@@ -66,8 +67,8 @@ class CategoryController {
                     return
                 }
             }
-            categoryInstance.properties = params
-            categoryInstance.description = categoryInstance.description ?: '(empty)';
+            categoryInstance.properties = params as BindingResult
+            categoryInstance.description = categoryInstance.description ?: '(empty)'
             if (!categoryInstance.hasErrors() && categoryInstance.save(flush: true)) {
                 flash.message = "${message(code: 'default.updated.message', args: [message(code: 'category.label', default: 'Category'), categoryInstance.id])}"
                 redirect(action: "show", id: categoryInstance.id)
@@ -90,7 +91,8 @@ class CategoryController {
                 flash.message = "${message(code: 'default.deleted.message', args: [message(code: 'category.label', default: 'Category'), params.id])}"
                 redirect(action: "list")
             }
-            catch (org.springframework.dao.DataIntegrityViolationException e) {
+            catch (DataIntegrityViolationException e) {
+                log.error(e)
                 flash.message = "${message(code: 'default.not.deleted.message', args: [message(code: 'category.label', default: 'Category'), params.id])}"
                 redirect(action: "show", id: params.id)
             }
