@@ -2,7 +2,7 @@
 <html>
     <head>
         <title><g:layoutTitle default="Grails" /></title>
-        <g:if test="${[null, 'dashboard', 'joke', 'user', 'category'].contains(controllerName)}">
+        <g:if test="${[null, 'dashboard', 'joke', 'user', 'category', 'search'].contains(controllerName)}">
             <asset:stylesheet src="main1.css" />
         </g:if>
         <g:else>

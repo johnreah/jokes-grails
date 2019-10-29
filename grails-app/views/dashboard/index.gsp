@@ -7,7 +7,7 @@
   <head>
     <title>Jokes Admin</title>
     <meta name="layout" content="main" />
-    <link rel="stylesheet" href="<g:resource file='homePagePanel.css' />" />
+    <asset:stylesheet src="homePagePanel.css" />
   </head>
   <body>
     <g:render template="/menuBar" />
@@ -61,6 +61,7 @@
       </div>
       <br/>
       <p>Application: ${grailsApplication.metadata.info.app.name} ${grailsApplication.metadata.info.app.version}</p>
+      <p>Environment: ${grails.util.Environment.current.name}</p>
     </div>
   </body>
 </html>

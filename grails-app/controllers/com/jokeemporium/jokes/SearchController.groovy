@@ -1,11 +1,10 @@
 package com.jokeemporium.jokes
 
-//import com.jokeemporium.jokes.Joke
-
 class SearchController {
 
     def index = {
-      params['searchMode'] = params['searchMode'] ?: 'default'
+        params['searchMode'] = params['searchMode'] ?: 'default'
+        render(view: "index")
     }
     
     //-----------------------------------------------------------------------

@@ -59,7 +59,7 @@ class Joke {
     }
 
     static log(String s) {
-        new Joke().log.info 'JOKE>>>>>>>>>>>>>>>> '  + s
+//        new Joke().log.info 'JOKE>>>>>>>>>>>>>>>> '  + s
     }
 
     static getJokesMatchingCategoryList(params) {
