@@ -30,14 +30,9 @@
     <br />
     <h1>Random Joke</h1>
     <div id="divRandomJoke"></div>
-    <!--
     <g:remoteLink controller="joke" action="ajaxRandomCleanJoke" update="divRandomJoke">
         Get a random (clean) joke from the database
     </g:remoteLink>
-    -->
-    <a href="/joke/ajaxRandomCleanJoke" onclick="new Ajax.Updater('divRandomJoke','/joke/ajaxRandomCleanJoke',{asynchronous:true,evalScripts:true});return false;">
-        Get a random (clean) joke from the database
-    </a>
 </div>
 </body>
 </html>

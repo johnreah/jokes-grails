@@ -134,7 +134,7 @@ class JokeController {
             render "Couldn't load a random clean joke!"
         }
         else {
-            render(template: "randomJoke", model: [jokeInstance: jokeInstance])
+            render(template: "randomJoke", contentType: "text/plain", model: [jokeInstance: jokeInstance])
         }
     }
 }
