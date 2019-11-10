@@ -67,9 +67,10 @@ cat > /etc/systemd/system/tomcat.service <<- EOF
 	Environment=JAVA_HOME=/usr/lib/jvm/java-11-openjdk-11.0.2.7-0.amzn2.x86_64
 	Environment=CATALINA_PID=/opt/tomcat/temp/tomcat.pid
 	Environment=CATALINA_HOME=/opt/tomcat
-	Environment='CATALINA_OPTS=-Xms512M -Xmx1G -Djava.net.preferIPv4Stack=true'
+	Environment='CATALINA_OPTS=-Xms128M -Xmx512M -Djava.net.preferIPv4Stack=true'
 	Environment='JAVA_OPTS=-Djava.awt.headless=true'
-
+	Environment='JOKES_DB_USER=jokes_grails'
+	Environment='JOKES_DB_PASSWORD=<password>'
 	ExecStart=/opt/tomcat/bin/startup.sh
 	ExecStop=/opt/tomcat/bin/shutdown.sh
 	SuccessExitStatus=143
@@ -86,11 +87,16 @@ EOF
 systemctl enable tomcat
 systemctl start tomcat
 
+# For access to manager webapp change $CATALINA_HOME/conf/tomcat_users.xml
+# For access from other machines change $CATALINA_HOME/webapps/<appname>/META_INF/context.xml
+
 # MariaDB
 yum install -y mariadb-server
 systemctl enable mariadb.service
 systemctl start mariadb.service
 
-# Environment variables - don't put real password in git
+# Environment variables - don't put real password in git.
+# This will only work for login shells. Use systemd service for daemons.
 echo "export JOKES_DB_USER=jokes_grails" > /etc/profile.d/variables.sh
-echo "export JOKES_DB_PASSWORD=jokes_grails" >> /etc/profile.d/variables.sh
+echo "export JOKES_DB_PASSWORD=<password>" >> /etc/profile.d/variables.sh
+
