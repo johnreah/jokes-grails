@@ -97,6 +97,6 @@ systemctl start mariadb.service
 
 # Environment variables - don't put real password in git.
 # This will only work for login shells. Use systemd service for daemons.
-echo "export JOKES_DB_USER=jokes_grails" > /etc/profile.d/variables.sh
-echo "export JOKES_DB_PASSWORD=<password>" >> /etc/profile.d/variables.sh
+#echo "export JOKES_DB_USER=jokes_grails" > /etc/profile.d/variables.sh
+#echo "export JOKES_DB_PASSWORD=<password>" >> /etc/profile.d/variables.sh
 
