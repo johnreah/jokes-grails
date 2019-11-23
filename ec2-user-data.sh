@@ -64,7 +64,7 @@ cat > /etc/systemd/system/tomcat.service <<- EOF
 	[Service]
 	Type=forking
 
-	Environment=JAVA_HOME=/usr/lib/jvm/java-11-openjdk-11.0.2.7-0.amzn2.x86_64
+	Environment=JAVA_HOME=/usr/lib/jvm/jre
 	Environment=CATALINA_PID=/opt/tomcat/temp/tomcat.pid
 	Environment=CATALINA_HOME=/opt/tomcat
 	Environment='CATALINA_OPTS=-Xms128M -Xmx512M -Djava.net.preferIPv4Stack=true'
